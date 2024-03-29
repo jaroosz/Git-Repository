@@ -4,7 +4,6 @@
 
 import time
 import random
-from pick_test import menu_list
 
 
 class Col:  # text color
@@ -499,9 +498,8 @@ def main():
                                 [0] Exit Game      
                                 """
         )
-        main_choice = menu_list("Main Menu", "New Game", "Load Game", "Options", "Exit Game")
-        print(main_choice)
-        if main_choice == "New Game":
+        main_choice = input("Choose: ")
+        if main_choice == "1":
             main_choice = False
             character_creation()
             while True:
@@ -530,12 +528,12 @@ def main():
                     main()
                 else:
                     print(f"{Col.RED}Invalid choice.{Col.RESET}")
-        elif main_choice == "Load Game":
+        elif main_choice == "2":
             continue
-        elif main_choice == "Options":
+        elif main_choice == "3":
             print("RPG Game v 0.0.1")
             time.sleep(1.2)
-        elif main_choice == "Exit Game":  #
+        elif main_choice == "9":  #
             print("Exiting the game. Goodbye!")
             break
         else:
