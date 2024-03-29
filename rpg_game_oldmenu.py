@@ -447,14 +447,51 @@ def loot(difficulty):
     int_tier = int(''.join(map(str, tier)))
     random_loot = random.choices(weapon_list[int_tier])
     stats['loot'] = random_loot[0]
-    if int_tier == 1:
-        print(f"You've found {Col.GREEN}{stats['loot']}{Col.RESET}")
-    if int_tier == 2:
-        print(f"You've found {Col.BLUE}{stats['loot']}{Col.RESET}")
-    if int_tier == 3:
-        print(f"You've found {Col.RED}{stats['loot']}{Col.RESET}")
-    if int_tier == 4:
-        print(f"You've found {Col.MAGENTA}{stats['loot']}{Col.RESET}")
+    weapon_stats = {"Damage": f"{stats["weapon"][1]} - {stats['weapon'][2]}",
+                    "STR": stats["weapon"][3], "VIT": stats["weapon"][4],
+                    "Dodge": stats["weapon"][5], "Crit": stats["weapon"][6]}
+    loot_stats = {"Damage": f"{stats["loot"][1]} - {stats['loot'][2]}",
+                  "STR": stats["loot"][3], "VIT": stats["loot"][4],
+                   "Dodge": stats["loot"][5], "Crit": stats["loot"][6],}
+
+    def weapons_stats(weapon_name, weapon_stats, loot_name, loot_stats, color):
+
+        # Define the width of each column
+        column_width = 45
+
+        # Format the player and enemy stats
+        loot_str = "\n".join(
+            [f"{key}: {value}" for key, value in list(weapon_stats.items())])
+        weapon_str = "\n".join(
+            [f"{key}: {value}" for key, value in list(loot_stats.items())])
+
+        # Split the player and enemy stats into lines
+        weapon_stats_lines = loot_str.split("\n")
+        loot_stats_lines = weapon_str.split("\n")
+
+        # Print the formatted output
+        if color == 1:
+            print(f"{weapon_name:<{column_width}}{Col.GREEN}{loot_name}{Col.RESET}")
+            for weapon_line, loot_line in zip(weapon_stats_lines, loot_stats_lines):
+                print(f"{weapon_line:<{column_width}}{loot_line}")
+
+        if color == 2:
+            print(f"{weapon_name:<{column_width}}{Col.BLUE}{loot_name}{Col.RESET}")
+            for weapon_line, loot_line in zip(weapon_stats_lines, loot_stats_lines):
+                print(f"{weapon_line:<{column_width}}{loot_line}")
+
+        if color == 3:
+            print(f"{weapon_name:<{column_width}}{Col.RED}{loot_name}{Col.RESET}")
+            for weapon_line, loot_line in zip(weapon_stats_lines, loot_stats_lines):
+                print(f"{weapon_line:<{column_width}}{loot_line}")
+
+        if color == 4:
+            print(f"{weapon_name:<{column_width}}{Col.MAGENTA}{loot_name}{Col.RESET}")
+            for weapon_line, loot_line in zip(weapon_stats_lines, loot_stats_lines):
+                print(f"{weapon_line:<{column_width}}{loot_line}")
+
+    weapons_stats(stats["weapon"][0], weapon_stats,  stats["loot"][0], loot_stats, int_tier)
+
 
     if int_tier != 0:
         equip = input("Do you want to equip the weapon? [Y]")
