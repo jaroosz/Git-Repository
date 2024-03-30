@@ -1,6 +1,7 @@
 # pylint: disable=C0116
 # pylint: disable=C0115
 # pylint: disable=C0114
+# pylint: disable=C0301
 
 import time
 import random
@@ -235,8 +236,8 @@ def hunt_menu():
     player_stats = {"Damage Min": stats["min_dmg"] + stats['weapon'][1],
                     "Damage Max": stats["max_dmg"] + stats['weapon'][2],
                     "Damage": player_min_max_damage, "Health": stats["hp"],
-                    "Dodge": stats["dodge"] + stats['weapon'][6],
-                    "Crit": stats["crit"] + stats['weapon'][5], "Weapon": stats['weapon']}
+                    "Dodge": stats["dodge"] + stats['weapon'][5],
+                    "Crit": stats["crit"] + stats['weapon'][6], "Weapon": stats['weapon']}
     enemy_stats = {"Damage Min": enemy_random[2], "Damage Max": enemy_random[3],
                    "Damage": enemy_min_max_damage, "Health": enemy_random[1],
                    "Dodge": enemy_random[4], "Crit": enemy_random[5],
@@ -401,7 +402,7 @@ def character_creation():
         input("Press any key")
 
 
-def stats_update(gained_exp):
+def stats_update(gained_exp=0):
 
     if gained_exp != 0:
         stats["exp"] += gained_exp
@@ -506,17 +507,19 @@ def loot(difficulty):
 def stats_check():
     "Check statistics"
 
-    print(
-        """                     
-                            ==============================
-                                   Inventory/Stats
-                            ==============================
+    stat_check = {"Damage": f"{stats["min_dmg"] + stats["weapon"][1]} - {stats["max_dmg"] + stats['weapon'][2]}",
+                    "Health": stats["hp"],
+                    "STR": stats["str"] + stats["weapon"][3],
+                    "VIT": stats["vit"] + stats["weapon"][4],
+                    "Dodge": stats["dodge"] + stats["weapon"][5],
+                    "Crit": stats["crit"] + stats["weapon"][6],
+                    "Exp": stats["exp"], "Next Lvl": stats["next_lvl"]}
 
-""", "STR:", stats["str"], "        VIT:", stats["vit"], "        DMG:",
-        stats["min_dmg"], "-", stats["max_dmg"], "         HP:", stats["hp"], "\n",
-        "      LVL | EXP | Next LVL \n", stats["lvl"], stats["exp"], stats['next_lvl']
+    stat_check_str = "\n".join(
+        [f"{key}: {value}" for key, value in list(stat_check.items())])
 
-    )
+    print(stat_check_str)
+
     input("Press any key")
 
 
@@ -540,7 +543,7 @@ def main():
             main_choice = False
             character_creation()
             while True:
-                stats_update(0)
+                stats_update()
                 print(  # printed game menu
                     """
                             ==============================
@@ -561,6 +564,9 @@ def main():
                 elif game_choice == "2":  # stats
                     stats_update(0)
                     stats_check()
+                elif game_choice == "5":
+                    save_game()
+                    break
                 elif game_choice == "9":  # back to menu
                     main()
                 else:
@@ -575,5 +581,13 @@ def main():
             break
         else:
             print(f"{Col.RED}Invalid choice.{Col.RESET}")
+
+
+def save_game():
+    file = open(f"{stats['name']}.py", "w", encoding="utf-8")
+    file.write(f"stats ={str(stats)}")
+    file.close()
+    main()
+
 
 main()
