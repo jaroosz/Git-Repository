@@ -5,7 +5,16 @@
 
 import time
 import random
+import os
+import json
 
+# create a folder which will contain all the characters created by player
+current_directory = os.path.dirname(os.path.abspath(__file__))
+folder_name = "chars"
+folder_path = os.path.join(current_directory, folder_name)
+if not os.path.exists(folder_path):
+    os.mkdir(folder_path)
+    print(f"Folder '{folder_name}' created.")
 
 class Col:  # text color
     RED = '\033[91m'
@@ -350,9 +359,7 @@ def fight(enemy_stats, enemy_name):
 def character_creation():
     "Create a character"
 
-    for key in list(stats)[:10]:
-        stats[key] = 0
-    stats["location"] = None
+    clear_stats()
 
     print("""
                             ==============================
@@ -364,9 +371,14 @@ def character_creation():
                     some stat points.
                   """
           )
-    stats["name"] = input("Enter name of your character: ")
-    while stats["name"] == "":
-        stats["name"] = input("Enter name of your character: ")
+    while True:
+        stats["name"] = input("Enter the character name: ")
+        if check_existing_character(stats["name"]):
+            print("Character with that name already exists. Please choose a different name.")
+        else:
+            print("Character name is available.")
+            break
+
 
     print("""
                     Customize your strength and vitality points to 
@@ -389,17 +401,21 @@ def character_creation():
         if skill == "1":
             stats["str"] += 1
             i -= 1
+            skill = None
         elif skill == "2":
             stats["vit"] += 1
             i -= 1
+            skill = None
         else:
             print("Wrong!")
+            skill = None
 
     if i == 0:
         print("\n"*4)
         print("                             STR:",
               stats["str"], "    |    ", "VIT:", stats["vit"])
         input("Press any key")
+        return game_menu()
 
 
 def stats_update(gained_exp=0):
@@ -420,7 +436,7 @@ def stats_update(gained_exp=0):
             elif choice == "2":
                 stats["vit"] += 1
             else:
-                print("error")
+                print("Error")
 
     stats["next_lvl"] = round(stats["lvl"] ** 1 * 5)  # next lvl
 
@@ -507,26 +523,25 @@ def loot(difficulty):
 def stats_check():
     "Check statistics"
 
-    stat_check = {"Damage": f"{stats["min_dmg"] + stats["weapon"][1]} - {stats["max_dmg"] + stats['weapon'][2]}",
+    stat_check = {"Name": stats["name"],
+                  "Damage": f"{stats["min_dmg"] + stats["weapon"][1]} - {stats["max_dmg"] + stats['weapon'][2]}",
                     "Health": stats["hp"],
-                    "STR": stats["str"] + stats["weapon"][3],
-                    "VIT": stats["vit"] + stats["weapon"][4],
-                    "Dodge": stats["dodge"] + stats["weapon"][5],
-                    "Crit": stats["crit"] + stats["weapon"][6],
-                    "Exp": stats["exp"], "Next Lvl": stats["next_lvl"]}
+                    "STR": f"{stats["str"] + stats["weapon"][3]}    |    VIT: {stats["vit"] + stats["weapon"][5]}",
+                    "Dodge": f"{stats["dodge"] + stats["weapon"][5]}    |    Crit: {stats["crit"] + stats["weapon"][6]}",
+                    "Lvl": f"{stats["lvl"]}     |     Exp {stats["exp"]} / {stats["next_lvl"]} ",
+                    "Weapon": stats["weapon"][0]}
 
     stat_check_str = "\n".join(
         [f"{key}: {value}" for key, value in list(stat_check.items())])
 
     print(stat_check_str)
-
     input("Press any key")
 
 
 def main():
     "Main Menu"
     while True:
-        print(  # printed main menu
+        print(  # print main menu
             """
                                 ==============================
                                         Main Menu
@@ -539,55 +554,91 @@ def main():
                                 """
         )
         main_choice = input("Choose: ")
-        if main_choice == "1":
-            main_choice = False
-            character_creation()
+        if main_choice == "1":  # start game
+            return character_creation()
+        elif main_choice == "2":  # load game
             while True:
-                stats_update()
-                print(  # printed game menu
-                    """
-                            ==============================
-                                      Game Menu
-                            ==============================
-                                    
-                            [1] Explore
-                            [2] Inventory/Stats
-                            [3] Quests
-                            [4] Shop
-                            [5] Save Game
-                            [9] Exit to Main Menu   
-                            """
-                )
-                game_choice = input("Enter your choice: ")
-                if game_choice == "1":  # explore
-                    explore_menu(stats["location"])
-                elif game_choice == "2":  # stats
-                    stats_update(0)
-                    stats_check()
-                elif game_choice == "5":
-                    save_game()
-                    break
-                elif game_choice == "9":  # back to menu
-                    main()
+                load_name = input("Enter the character name: ")
+                if check_existing_character(load_name):
+                    game_menu(False, load_name)
                 else:
-                    print(f"{Col.RED}Invalid choice.{Col.RESET}")
-        elif main_choice == "2":
-            continue
-        elif main_choice == "3":
+                    print("Player do not exist")
+                    input("Press any key")
+                    break
+        elif main_choice == "3":  # options
             print("RPG Game v 0.0.1")
             time.sleep(1.2)
-        elif main_choice == "9":  #
+        elif main_choice == "9":  # exit
             print("Exiting the game. Goodbye!")
             break
         else:
             print(f"{Col.RED}Invalid choice.{Col.RESET}")
 
 
-def save_game():
-    file = open(f"{stats['name']}.py", "w", encoding="utf-8")
-    file.write(f"stats ={str(stats)}")
-    file.close()
-    main()
+def game_menu(char_is_new=True, name=None):
+    global stats
+    if char_is_new is False:
+        try:
+            char_file_path = f"{folder_path}\\" + name + ".json"
+            with open(char_file_path, "r", encoding="utf-8") as json_file:
+                stats = json.load(json_file)
+        except FileNotFoundError:
+            print(f"File '{char_file_path}' not found.")
+            return main()
+        except json.JSONDecodeError:
+            print(f"Error decoding player data in '{char_file_path}'.")
+            return main()
+    while True:
+        stats_update()
+        print(  # printed game menu
+            """
+                    ==============================
+                                Game Menu
+                    ==============================
+                            
+                    [1] Explore
+                    [2] Inventory/Stats
+                    [3] Quests
+                    [4] Shop
+                    [5] Save Game
+                    [9] Exit to Main Menu   
+                    """
+        )
+        game_choice = input("Enter your choice: ")
+        if game_choice == "1":  # explore
+            explore_menu(stats["location"])
+        elif game_choice == "2":  # stats
+            stats_update()
+            stats_check()
+        elif game_choice == "5":  # save game
+            return save_game(stats['name'])
+        elif game_choice == "9":  # back to menu
+            clear_stats()
+            return main()
+        else:
+            print(f"{Col.RED}Invalid choice.{Col.RESET}")
+
+
+def save_game(name):
+    file_path = os.path.join(folder_path, f"{name}.json")
+    with open(file_path, "w", encoding="utf-8") as json_file:
+        json.dump(stats, json_file)
+    return main()
+
+def clear_stats():
+    for key in list(stats)[:9]:
+        stats[key] = 0
+    stats["lvl"] = 1
+    stats["location"] = None
+    stats["class"] = None
+    stats["weapon"] = ["None", 0, 0, 0, 0, 0, 0]
+    stats["loot"] = ["None", 0, 0, 0, 0, 0, 0]
+
+def check_existing_character(name):
+    # Check if a file with the given character name already exists
+    file_name = name + ".json"
+    file_path = os.path.join(folder_name, file_name)
+    return os.path.exists(file_path)
 
 
 main()
