@@ -76,67 +76,102 @@ weapon_list = {  # name, min_dmg, max_dmg, str, vit, crit, dodge
     ],
 
     3: [
-        ["Sword of Kings", 10, 15, 5, 5, 11, 6],
-        ["Hammer of Thor", 12, 18, 6, 4, 13, 5],
-        ["Blade of Legends", 11, 16, 7, 3, 12, 6],
-        ["Spear of Odin", 13, 20, 8, 4, 14, 4],
-        ["Holy Sword", 14, 21, 7, 6, 16, 4],
-        ["Sword of Apocalypse", 15, 22, 9, 5, 15, 4],
-        ["Wind Bow", 12, 18, 6, 5, 12, 6],
-        ["Shield of Zeus", 10, 16, 5, 7, 11, 7],
-        ["Sword of Slaying", 13, 19, 8, 6, 13, 5],
-        ["Staff of Elders", 14, 20, 7, 8, 15, 5],
+        ["*Sword of Kings*", 10, 15, 5, 5, 11, 6],
+        ["*Hammer of Thor*", 12, 18, 6, 4, 13, 5],
+        ["*Blade of Legends*", 11, 16, 7, 3, 12, 6],
+        ["*Spear of Odin*", 13, 20, 8, 4, 14, 4],
+        ["*Holy Sword*", 14, 21, 7, 6, 16, 4],
+        ["*Sword of Apocalypse*", 15, 22, 9, 5, 15, 4],
+        ["*Wind Bow*", 12, 18, 6, 5, 12, 6],
+        ["*Shield of Zeus*", 10, 16, 5, 7, 11, 7],
+        ["*Sword of Slaying*", 13, 19, 8, 6, 13, 5],
+        ["*Staff of Elders*", 14, 20, 7, 8, 15, 5],
     ],
 
     4: [
-        ["*Soul Reaver, the Scythe of Death*", 16, 25, 10, 8, 17, 10],
-        ["*Inferno, the Flaming Sword*", 18, 28, 12, 7, 19, 9],
-        ["*Frostbite, the Icy Spear*", 17, 26, 11, 9, 18, 9],
-        ["*Divine Justice, the Celestial Hammer*", 20, 30, 14, 10, 20, 8],
-        ["*Ethereal Bow, the Archer's Dream*", 15, 24, 9, 12, 24, 10],
-        ["*Thunderstruck, the Lightning Staff*", 19, 29, 13, 11, 19, 8],
-        ["*Phoenix Talon, the Fire Dagger*", 14, 23, 11, 12, 22, 8],
-        ["*Void Cleaver, the Dark Blade*", 22, 32, 15, 14, 22, 8],
-        ["*Aurora Scepter, the Wand of Light*", 21, 31, 16, 15, 21, 9],
-        ["*Time Bender, the Staff of Ages*", 25, 35, 18, 18, 25, 12],
+        ["**Soul Reaver, the Scythe of Death**", 16, 25, 10, 8, 17, 10],
+        ["**Inferno, the Flaming Sword**", 18, 28, 12, 7, 19, 9],
+        ["**Frostbite, the Icy Spear**", 17, 26, 11, 9, 18, 9],
+        ["**Divine Justice, the Celestial Hammer**", 20, 30, 14, 10, 20, 8],
+        ["**Ethereal Bow, the Archer's Dream**", 15, 24, 9, 12, 24, 10],
+        ["**Thunderstruck, the Lightning Staff**", 19, 29, 13, 11, 19, 8],
+        ["**Phoenix Talon, the Fire Dagger**", 14, 23, 11, 12, 22, 8],
+        ["**Void Cleaver, the Dark Blade**", 22, 32, 15, 14, 22, 8],
+        ["**Aurora Scepter, the Wand of Light**", 21, 31, 16, 15, 21, 9],
+        ["**Time Bender, the Staff of Ages**", 25, 35, 18, 18, 25, 12],
     ]
 }
 
 monster_list = {  # name, health, min_dmg, max_dmg, dodge, crit, exp
     1: [
-        ["Goblin", 20, 3, 6, 5, 5, 3],
-        ["Skeleton", 25, 2, 5, 8, 8, 3],
-        ["Orc", 38, 3, 5, 7, 4, 4],
-        ["Spider", 15, 7, 9, 15, 15, 2],
-        ["Rat", 35, 4, 6, 12, 4, 3],
-        ["Slime", 40, 5, 7, 6, 3, 2],
-        ["Bat", 25, 2, 4, 20, 7, 2],
-        ["Zombie", 18, 8, 11, 5, 19, 2],
-        ["Wraith", 35, 3, 6, 8, 9, 4],
-        ["Imp", 30, 3, 8, 9, 11, 3],
-
+        ["Seagull", 25, 6, 12, 10, 10, 6],
+        ["Sunset Wolf", 25, 8, 16, 16, 6, 8],
+        ["Golden Sprite", 36, 4, 10, 24, 4, 4],
+        ["Sandy Crawler", 30, 10, 20, 6, 2, 6],
+        ["Beach Bandit", 30, 12, 24, 20, 14, 10],
+        ["Palm Tree Ent", 34, 14, 28, 4, 6, 12],
+        ["Oceanic Wraith", 22, 8, 18, 30, 10, 8],
+        ["Coastal Werewolf", 40, 16, 32, 14, 12, 14],
+        ["Coral Stalker", 44, 10, 20, 20, 8, 6],
+        ["Seashell Sorceress", 45, 18, 36, 16, 16, 16],
     ],
     2: [
-        ["Ratling Scavenger", 40, 10, 15, 5, 8, 8],
-        ["Goblin Thug", 45, 20, 28, 8, 11, 10],
-        ["Skeleton Warrior", 50, 15, 25, 7, 10, 11],
-        ["Spiderling Swarm", 35, 14, 16, 10, 20, 8],
-        ["Bandit Rogue", 55, 20, 30, 12, 9, 12],
-        ["Orc Brute", 60, 19, 29, 6, 14, 14],
-        ["Zombie Crawler", 45, 18, 24, 3, 17, 13],
-        ["Cave Bat", 38, 10, 16, 25, 15, 9],
-        ["Giant Spider", 55, 18, 22, 8, 9, 11],
-        ["Dark Cultist", 50, 22, 30, 5, 8, 12],
-
+        ["Crystal Spider", 40, 8, 16, 14, 6, 8],
+        ["Cave Bat", 30, 6, 12, 24, 4, 4],
+        ["Rock Golem", 70, 10, 20, 4, 2, 6],
+        ["Frost Elemental", 50, 12, 24, 12, 10, 8],
+        ["Crystal Guardian", 80, 14, 28, 6, 6, 12],
+        ["Lava Golem", 60, 16, 32, 10, 12, 14],
+        ["Emerald Serpent", 90, 18, 36, 16, 8, 16],
+        ["Shadow Crystal", 44, 8, 18, 20, 14, 10],
+        ["Geode Gazer", 36, 6, 14, 28, 4, 4],
+        ["Sapphire Specter", 56, 10, 22, 18, 8, 10]
+    ],
+    3: [
+        ["Ancient Guardian", 80, 12, 24, 8, 6, 12],
+        ["Decaying Zombie", 60, 10, 20, 16, 4, 8],
+        ["Ghostly Apparition", 50, 8, 16, 30, 12, 6],
+        ["Eldritch Shade", 70, 14, 28, 14, 8, 10],
+        ["Cursed Mummy", 90, 16, 32, 10, 10, 14],
+        ["Ethereal Phantom", 40, 6, 14, 20, 6, 4],
+        ["Lost Soul", 36, 4, 10, 24, 4, 4],
+        ["Spirit Guardian", 56, 10, 22, 18, 8, 10],
+        ["Forgotten Wraith", 44, 8, 18, 28, 10, 6],
+        ["Shadow Sentinel", 76, 14, 26, 12, 6, 12]
+    ],
+    4: [
+        ["Yeti", 80, 16, 32, 8, 4, 14],
+        ["Snow Leopard", 70, 14, 28, 20, 10, 12],
+        ["Ice Elemental", 90, 18, 36, 12, 8, 16],
+        ["Frost Giant", 100, 20, 40, 4, 2, 18],
+        ["Frozen Specter", 60, 12, 24, 24, 14, 10],
+        ["Avalanche Elemental", 110, 22, 44, 6, 6, 20],
+        ["Glacial Yeti", 96, 18, 34, 10, 4, 16],
+        ["Frozen Wyvern", 120, 24, 48, 16, 12, 22],
+        ["Snowfall Guardian", 84, 16, 30, 18, 8, 14],
+        ["Icebound Ogre", 104, 20, 38, 14, 6, 18]
+    ],
+    5: [
+        ["Goblin", 50, 10, 20, 14, 6, 8],
+        ["Shadow Wolf", 40, 8, 16, 24, 4, 4],
+        ["Dark Sprite", 60, 12, 24, 10, 2, 8],
+        ["Thorned Vine", 70, 14, 28, 8, 10, 12],
+        ["Nightshade Assassin", 80, 16, 32, 6, 4, 14],
+        ["Haunted Tree", 44, 8, 18, 20, 4, 6],
+        ["Spectral Banshee", 56, 10, 22, 16, 8, 10],
+        ["Feral Werewolf", 90, 18, 36, 12, 6, 16],
+        ["Ethereal Stalker", 100, 20, 40, 10, 14, 18],
+        ["Wicked Witch", 76, 14, 30, 18, 12, 12]
     ]
 }
 
 location_list = {  # number, name, description, difficulty
     0: ["Town"],
-    1: ["Forest of Shadows",
+    1: ["Sunlit Coastline",
         """
-        A dense forest shrouded in mist, rumored to be haunted 
-        by mysterious creatures and ancient spirits.
+        Golden sands stretch as far as the eye can see, kissed by the 
+        gentle waves of the azure sea, offering serene beauty and hidden 
+        mysteries beneath the surface.
         """, "Very Easy"
         ],
     2: ["Crystal Caverns",
@@ -158,11 +193,10 @@ location_list = {  # number, name, description, difficulty
         inhabited by resilient wildlife and perilous ice monsters.
         """, "Hard"
         ],
-    5: ["Sunlit Coastline",
+    5: ["Forest of Shadows",
         """
-        Golden sands stretch as far as the eye can see, kissed by the 
-        gentle waves of the azure sea, offering serene beauty and hidden 
-        mysteries beneath the surface.
+        A dense forest shrouded in mist, rumored to be haunted 
+        by mysterious creatures and ancient spirits.
         """, "Very Hard"
         ]
 }
@@ -194,11 +228,11 @@ def explore_menu(location):
                             ==============================
             
                                 Choose a location:
-                        [1] Forest of Shadows       [Very Easy]
+                        [1] Sunlit Coastline        [Very Easy]
                         [2] Crystal Caverns         [Easy]
                         [3] Lost Ruins of Eldoria   [Normal]
                         [4] Frostpeak Mountains     [Hard]
-                        [5] Sunlit Coastline        [Very Hard]
+                        [5] Forest of Shadows       [Very Hard]
                 """
                   )
             stats["location"] = int(input("Enter your choice: "))
@@ -221,11 +255,11 @@ def explore_menu(location):
                            You are in Town. Go on a journey!
               
                                   Choose a location:
-                        [1] Forest of Shadows       [Very Easy]
+                        [1] Sunlit Coastline        [Very Easy]
                         [2] Crystal Caverns         [Easy]
                         [3] Lost Ruins of Eldoria   [Normal]
                         [4] Frostpeak Mountains     [Hard]
-                        [5] Sunlit Coastline        [Very Hard]
+                        [5] Forest of Shadows       [Very Hard]
                   """
               )
         stats["location"] = int(input("Enter your choice: "))
@@ -246,7 +280,7 @@ def hunt_menu():
                     "Damage Max": stats["max_dmg"] + stats['weapon'][2],
                     "Damage": player_min_max_damage, "Health": stats["hp"],
                     "Dodge": stats["dodge"] + stats['weapon'][5],
-                    "Crit": stats["crit"] + stats['weapon'][6], "Weapon": stats['weapon']}
+                    "Crit": stats["crit"] + stats['weapon'][6], "Weapon": stats['weapon'][0]}
     enemy_stats = {"Damage Min": enemy_random[2], "Damage Max": enemy_random[3],
                    "Damage": enemy_min_max_damage, "Health": enemy_random[1],
                    "Dodge": enemy_random[4], "Crit": enemy_random[5],
@@ -454,11 +488,11 @@ def stats_update(gained_exp=0):
 
 def loot(difficulty):
     weights = {
-        1: [50, 30, 15, 4, 1],
-        2: [40, 34, 18, 6, 2],
-        3: [30, 38, 21, 8, 3],
-        4: [20, 42, 24, 10, 4],
-        5: [10, 46, 27, 12, 5]
+        1: [87.6, 10, 2, 0.3, 0.1],
+        2: [81, 15, 3, 0.75, 0.25],
+        3: [73.6, 20, 5, 1, 0.4],
+        4: [65.25, 25, 7.5, 1.5, 0.75],
+        5: [57, 30, 10, 2, 1]
     }
     tier = random.choices(list(weapon_list.keys()), weights[difficulty])
     int_tier = int(''.join(map(str, tier)))
@@ -527,7 +561,7 @@ def stats_check():
                   "Damage": f"{stats["min_dmg"] + stats["weapon"][1]} - {stats["max_dmg"] + stats['weapon'][2]}",
                     "Health": stats["hp"],
                     "STR": f"{stats["str"] + stats["weapon"][3]}    |    VIT: {stats["vit"] + stats["weapon"][5]}",
-                    "Dodge": f"{stats["dodge"] + stats["weapon"][5]}    |    Crit: {stats["crit"] + stats["weapon"][6]}",
+                    "Dodge": f"{stats["dodge"] + stats["weapon"][5]} %   |    Crit: {stats["crit"] + stats["weapon"][6]} %",
                     "Lvl": f"{stats["lvl"]}     |     Exp {stats["exp"]} / {stats["next_lvl"]} ",
                     "Weapon": stats["weapon"][0]}
 
@@ -598,9 +632,10 @@ def game_menu(char_is_new=True, name=None):
                             
                     [1] Explore
                     [2] Inventory/Stats
-                    [3] Quests
-                    [4] Shop
-                    [5] Save Game
+                    [3] PvP
+                    [4] Quests
+                    [5] Shop
+                    [6] Save Game
                     [9] Exit to Main Menu   
                     """
         )
@@ -610,7 +645,7 @@ def game_menu(char_is_new=True, name=None):
         elif game_choice == "2":  # stats
             stats_update()
             stats_check()
-        elif game_choice == "5":  # save game
+        elif game_choice == "6":  # save game
             return save_game(stats['name'])
         elif game_choice == "9":  # back to menu
             clear_stats()
