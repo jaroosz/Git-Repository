@@ -1,1 +1,1 @@
-{"name": "ddddddd", "exp": 0, "next_lvl": 5, "min_dmg": 70, "max_dmg": 120, "str": 50, "vit": 25, "hp": 240, "crit": 1.5, "dodge": 0.0, "lvl": 10, "location": 1, "class": null, "weapon": ["None", 0, 0, 0, 0, 0, 0], "loot": ["None", 0, 0, 0, 0, 0, 0]}
+{"name": "ddddddd", "exp": 6, "next_lvl": 55, "min_dmg": 64, "max_dmg": 76, "str": 51, "vit": 25, "hp": 102, "crit": 15.3, "dodge": 7.5, "lvl": 11, "location": 5, "class": null, "weapon": ["**Phoenix Talon, the Fire Dagger**", 14, 23, 11, 12, 22, 8], "loot": [["None", 0, 0, 0, 0, 0, 0]]}
